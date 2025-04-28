@@ -88,14 +88,14 @@ for (i in seq_along(seq)) {
 vertices <- generateCombinations(word) # Is the same of vertices_ordem????
 
 #####################################################################################################################################
-
+library(pbmcapply)
 # Transformar sequências em matrizes de adjacência
 char_seqs <- as.character(seq)
 splitted_seq <- strsplit(char_seqs, split = "", fixed = TRUE)
 
-adj_matrices <- mclapply(seq_along(splitted_seq), function(i) {
+adj_matrices <- pbmclapply(seq_along(splitted_seq), function(i) {
   # sequence <- strsplit(toString(seq[i]), split = '', fixed = TRUE)[[1]]
-  createAdjMatrix(word, step, splitted_seq[i][[1]], vertices_ordem)
+  createAdjMatrix(word, step, splitted_seq[[i]], vertices_ordem)
 }, mc.cores = n_cores)
 
 # Adicionar nome as matrizes de adjacência
