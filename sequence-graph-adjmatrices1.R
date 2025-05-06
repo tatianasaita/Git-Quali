@@ -34,7 +34,7 @@ library("Biostrings") #Sequências
 library("seqinr") # Sequências
 library("igraph") # Grafo
 library("dplyr") # Manipulação de dados
-library("parallel") # Paralelização
+library("pbmcapply") # Paralelização (com progress bar)
 
 ## ---------------------------
 
@@ -59,7 +59,7 @@ true_labels_hiv <- data.frame(name = seq_names, length = lengths, subtype = NA) 
 #write.csv(df, "HIV_6946dframe.csv", row.names = FALSE)
 
 # Caso já tenha o arquivo pronto
-# true_labels_hiv <- read.csv("HIV_6946annota.csv", header = TRUE, sep = ";") # arquivo com informações das seq. - name, subtype, length
+true_labels_hiv <- read.csv("HIV_6946annota.csv", header = TRUE, sep = ";") # arquivo com informações das seq. - name, subtype, length
 
 word <- 3
 step <- 1
@@ -88,7 +88,7 @@ for (i in seq_along(seq)) {
 vertices <- generateCombinations(word) # Is the same of vertices_ordem????
 
 #####################################################################################################################################
-library(pbmcapply)
+
 # Transformar sequências em matrizes de adjacência
 char_seqs <- as.character(seq)
 splitted_seq <- strsplit(char_seqs, split = "", fixed = TRUE)
