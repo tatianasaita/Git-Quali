@@ -1,6 +1,41 @@
+## ---------------------------
+##
+## Script name: clusterization.R
+##
+## Purpose of script: Generate subclusters for the HIV dataset
+##
+## Author: Saita, T. M.
+##
+## Date Created: 2025-05-06
+##
+## Copyright (c) Saita, T. M., 2025
+## Email: tatisaita@gmail.com
+##
+## ---------------------------
+##
+## Notes:
+##   
+##
+## ---------------------------
+
+## set working directory for Mac and PC
+
+setwd("~/Documents/doc_tatiana/Git-Quali/")
+
+## ---------------------------
+
+options(scipen = 6, digits = 4) # For non-scientific notation
+
+## ---------------------------
+
+## load up the packages we will need: 
+
 library("dendextend")
 library("ggplot2")
 library("dplyr")
+
+## ---------------------------
+
 
 # Construção: Separei em grandes clusters, para obter os clusters 1 e 2 no corte h=700, para o restante foram separados os cluster no corte h=500. Depois foram subdivididos em clusters menores
 
