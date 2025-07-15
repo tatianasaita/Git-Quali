@@ -14,14 +14,14 @@ for (first in vertices_ordem) {
 
 vectorized_df <- do.call(rbind, vectorized_matrices)
 colnames(vectorized_df) <- formatted_combinations
-rownames(vectorized_df) <- true_labels_hiv$name
+rownames(vectorized_df) <- true_labels_hiv2$name
 vectorized_dframe <- as.data.frame(vectorized_df)
-vectorized_dframe$subtype <- true_labels_hiv$subtype 
+vectorized_dframe$subtype <- true_labels_hiv2$subtype 
 
 
 
 # Filtrar sequências para treino com mais de 800 pb
-selected_elements800 <- true_labels_hiv %>%  
+selected_elements800 <- true_labels_hiv2 %>%  
   filter(length >= 800)
 summary_by_subtype <- selected_elements800 %>%  
   group_by(subtype) %>%  
@@ -29,7 +29,7 @@ summary_by_subtype <- selected_elements800 %>%
 
 # Para visualizar nome e tamanho das sequências selecionadas
 seq800 <- vectorized_dframe[rownames(vectorized_dframe) %in% selected_elements800$name, ] %>%  
-  mutate(length = true_labels_hiv$length[match(rownames(.), true_labels_hiv$name)]) %>%  
+  mutate(length = true_labels_hiv2$length[match(rownames(.), true_labels_hiv2$name)]) %>%  
   mutate(name = rownames(.)) %>%  
   select(name, length, everything())
 
@@ -57,7 +57,7 @@ validation_800 <- not_in_traintest %>%
   group_by(subtype) %>%                         
   slice_sample(n = 20) %>% 
   ungroup()%>%  
-  mutate(length = true_labels_hiv$length[match(name, true_labels_hiv$name)])%>%   
+  mutate(length = true_labels_hiv2$length[match(name, true_labels_hiv2$name)])%>%   
   select(name, subtype, length, everything())
 
 # Visualizar o tamanho das sequências em boxplot
