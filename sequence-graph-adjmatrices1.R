@@ -73,15 +73,15 @@ vertices_ordem <- c("AAA", "AAC", "AAG", "AAT", "ACA", "ACC", "ACG", "ACT", "AGA
 # Transformação de sequências em grafos - USAR APENAS QUANDO FOR NECESSÁRIO VISUALIZAR OS GRAFOS
 
 
-graphs <- list()
+#graphs <- list()
 
 
 # Gerar e armazenar os grafos e matrizes de adjacência de cada sequência
-for (i in seq_along(seq)) {
-  sequence <- strsplit(toString(seq[i]), split = '')[[1]]
-  net <- createNet(word, step, sequence)
-  graphs[[i]] <- net
-}  
+#for (i in seq_along(seq)) {
+#  sequence <- strsplit(toString(seq[i]), split = '')[[1]]
+#  net <- createNet(word, step, sequence)
+#  graphs[[i]] <- net
+#}  
 # Cominação para gerar os vértices
 
 
