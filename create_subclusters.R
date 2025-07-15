@@ -36,7 +36,7 @@ source("assign_subclusters.R")
 
 labels_hiv <- true_labels_hiv$subtype
 clusters_hiv <- assign_subclusters(dend_euc,
-                                   labels_hiv,
+                                   labels_hiv2,
                                    hom_thresh = 0.9,
                                    min_size = 10)
 table(clusters_hiv, labels_hiv)
