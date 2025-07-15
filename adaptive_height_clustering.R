@@ -1,6 +1,6 @@
 adaptive_height_clustering <- function(dend, data, n_heights = 20, 
-                                       homogeneity_threshold = 0.3,
-                                       min_cluster_size = 5) {
+                                       homogeneity_threshold = 0.7,
+                                       min_cluster_size = 1) {
   
   # Get height range of dendrogram
   dend_heights <- heights_per_k.dendrogram(dend)
