@@ -50,32 +50,32 @@ original_data <- dist_matriz_euclidean
 ## ---------------------------
 # Method 1
 # Method 1: Dynamic clustering
-result1 <- dynamic_subclustering(dend_euc, original_data, 
-                                 max_height = 700,
-                                 homogeneity_threshold = 0.1,
-                                 density_threshold = 0.05,
-                                 min_cluster_size = 10)
+#result1 <- dynamic_subclustering(dend_euc, original_data, 
+                                # max_height = 700,
+                                # homogeneity_threshold = 0.1,
+                                # density_threshold = 0.05,
+                                # min_cluster_size = 10)
 
 # For example, using results from method 1
-true_labels_hiv1 <- merge(true_labels_hiv, 
-                          result1, 
-                          by.x = "row_names", 
-                          by.y = "label",
-                          all.x = TRUE)
-plot_dendrogram_clusters(dend_euc, result1)
+#true_labels_hiv1 <- merge(true_labels_hiv, 
+                         # result1, 
+                         # by.x = "row_names", 
+                         # by.y = "label",
+                         # all.x = TRUE)
+#plot_dendrogram_clusters(dend_euc, result1)
 
 ## ---------------------------
 # Method 2
 # Method 2: Adaptive height clustering
 result3 <- adaptive_height_clustering(dend_euc, original_data, 
                                       n_heights = 20,
-                                      homogeneity_threshold = 0.1,
-                                      min_cluster_size = 10)
+                                      homogeneity_threshold = 0.7,
+                                      min_cluster_size = 0)
 
 # For example, using results from method 2
 true_labels_hiv2 <- merge(true_labels_hiv,
-                          result2, 
-                          by.x = "row_names",
+                          result3, 
+                          by.x = "x",
                           by.y = "label",
                           all.x = TRUE)
-plot_dendrogram_clusters(dend_euc, result2)
+plot_dendrogram_clusters(dend_euc, result3)
