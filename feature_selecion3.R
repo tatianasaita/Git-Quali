@@ -2,12 +2,12 @@
 
 
 # Função para obter e normalizar a matriz de adjacência para todos os subclusters  
-obter_matrizes_normalizadas_todos_subclusters <- function(true_labels_hiv, name_adj_matrices) {  
-  subclusters <- unique(true_labels_hiv$subcluster)  
+obter_matrizes_normalizadas_todos_subclusters <- function(true_labels_hiv2, name_adj_matrices) {  
+  subclusters <- unique(true_labels_hiv2$subcluster)  
   matrizes_normalizadas <- list()  
   for (subcluster_num in subclusters) {  
-    indices_subcluster <- which(true_labels_hiv$subcluster == subcluster_num)  
-    names_subcluster <- true_labels_hiv$name[indices_subcluster]  
+    indices_subcluster <- which(true_labels_hiv2$subcluster == subcluster_num)  
+    names_subcluster <- true_labels_hiv2$name[indices_subcluster]  
     selected_adj_matrices <- name_adj_matrices[names_subcluster]  
 
     summed_matrix <- Reduce(`+`, selected_adj_matrices)  
@@ -30,7 +30,7 @@ obter_matrizes_normalizadas_todos_subclusters <- function(true_labels_hiv, name_
   return(matrizes_normalizadas)  
 }  
 
- summarized_normalized_matrices <- obter_matrizes_normalizadas_todos_subclusters(true_labels_hiv, name_adj_matrices)
+ summarized_normalized_matrices <- obter_matrizes_normalizadas_todos_subclusters(true_labels_hiv2, name_adj_matrices)
 
  ###################################
  
