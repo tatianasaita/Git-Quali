@@ -1,6 +1,6 @@
 ## ---------------------------
 ##
-## Script name: createNet.R
+## Script name: sequence-graph-adjmatrices1.R
 ##
 ## Purpose of script: Transform sequences into graphs and adjacency matrices
 ##
@@ -34,39 +34,15 @@ library("Biostrings") #Sequências
 library("seqinr") # Sequências
 library("parallel")
 library("pbapply")
-library("dplyr")
 
 ## ---------------------------
 
 ## Load up our functions into memory
-source("generateCombinations.R")
-source("createNet_function.R")
-## ---------------------------
-
-
-# USAR APENAS QUANDO FOR NECESSÁRIO VISUALIZAR OS GRAFOS!!!
-
+source("createDframe_function.R")
 
 ## ---------------------------
+cat("=== DATAFRAME PREPARATION ===\n")
 
-cat("=== GENERATE LIST OF GRAPHS ===\n")
+true_labels_hiv <- create_labels_dataframe("HIV_6964.fasta")
 
-# Parâmetros 
-word <- 3 #ALTERAR PARÂMETROS!!
-step <- 1 #ALTERAR PARÂMETROS!!
-vertices <- generateCombinations(word)
-
-# Arquivos  
-seq_name <- "HIV_6964.fasta" # ALTERAR ARQUIVO .FASTA!! 
-seq <- readBStringSet(seq_name) # Leitura de sequências
-
-# Gerar e armazenar os grafos e matrizes de adjacência de cada sequência
-graphs <- list()
-
-for (i in seq_along(seq)) {
-  sequence <- strsplit(toString(seq[i]), split = '')[[1]]
-  net <- createNet(word, step, sequence)
-  graphs[[i]] <- net
-} 
-cat("=== createNet ok! ===\n")
- 
+cat("=== createDataframe ok! ===\n")
